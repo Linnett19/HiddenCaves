@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "side": "hidden_caves:block/frosting/red_frosted_cake_layers",
+    "bottom": "hidden_caves:block/cake_layer_top",
+    "top": "hidden_caves:block/frosting/red_frosting"
+  }
+}

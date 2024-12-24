@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.linnett.hidden_caves.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "hidden_caves.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
