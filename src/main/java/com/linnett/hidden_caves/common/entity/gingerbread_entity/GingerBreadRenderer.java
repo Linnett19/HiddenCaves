@@ -17,8 +17,8 @@ public class GingerBreadRenderer extends MobRenderer<GingerBreadEntity, GingerBr
     private static final Map<GingerVariant, ResourceLocation> LOCATION_MAP =
             Util.make(Maps.newEnumMap(GingerVariant.class), map
             -> {
-                map.put(GingerVariant.NORMAL,new ResourceLocation(HiddenCaves.MODID, "textures/entity/gingerbread_man/gingerbread_man.png"));
-                map.put(GingerVariant.HAPPY,new ResourceLocation(HiddenCaves.MODID, "textures/entity/gingerbread_man/gingerbread_man_1.png"));
+                map.put(GingerVariant.NORMAL,ResourceLocation.fromNamespaceAndPath(HiddenCaves.MODID, "textures/entity/gingerbread_man/gingerbread_man.png"));
+                map.put(GingerVariant.HAPPY,ResourceLocation.fromNamespaceAndPath(HiddenCaves.MODID, "textures/entity/gingerbread_man/gingerbread_man_1.png"));
     });
 
     public GingerBreadRenderer(EntityRendererProvider.Context context) {

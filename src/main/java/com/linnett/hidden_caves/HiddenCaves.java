@@ -2,9 +2,11 @@ package com.linnett.hidden_caves;
 
 import com.linnett.hidden_caves.common.block.ModBlocks;
 import com.linnett.hidden_caves.common.entity.ModEntities;
+import com.linnett.hidden_caves.common.entity.gingerbread_entity.GingerBreadRenderer;
 import com.linnett.hidden_caves.common.item.ModCreativeTabs;
 import com.linnett.hidden_caves.common.item.ModItems;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
