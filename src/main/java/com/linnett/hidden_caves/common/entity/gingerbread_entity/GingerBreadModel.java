@@ -1,4 +1,6 @@
-package com.linnett.hidden_caves.common.entity.gingerbread_entity;
+package com.linnett.hidden_caves.common.entity.gingerbread_entity;// Made with Blockbench 4.11.2
+// Exported for Minecraft version 1.17 or later with Mojang mappings
+// Paste this class into your mod and generate all required imports
 
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -12,6 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
 public class GingerBreadModel<T extends Entity> extends EntityModel<T> {
+	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("modid", "gingerbreadmodel"), "main");
 	private final ModelPart root;
 	private final ModelPart body;
@@ -44,10 +47,10 @@ public class GingerBreadModel<T extends Entity> extends EntityModel<T> {
 		PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(-0.5F, 17.0F, 0.0F));
 
 		PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 7).addBox(-2.5F, -1.425F, -0.4F, 5.0F, 4.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 17).addBox(-2.5F, -1.425F, -0.6F, 5.0F, 4.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.5F, 1.5F, -0.6F));
+		.texOffs(0, 17).addBox(-2.5F, -1.425F, -0.6F, 5.0F, 4.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.5F, 1.5F, -0.6F));
 
 		PartDefinition head = body.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-2.5F, -4.9375F, -0.4625F, 5.0F, 5.0F, 2.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 21).addBox(-0.5F, -6.1125F, -0.5375F, 5.0F, 3.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -1.4875F, 0.0625F));
+		.texOffs(0, 21).addBox(-0.5F, -6.1125F, -0.5375F, 5.0F, 3.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -1.4875F, 0.0625F));
 
 		PartDefinition face = head.addOrReplaceChild("face", CubeListBuilder.create(), PartPose.offset(-0.5F, -0.0125F, 0.5125F));
 
@@ -67,12 +70,12 @@ public class GingerBreadModel<T extends Entity> extends EntityModel<T> {
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int rgb) {
-		root.render(poseStack, vertexConsumer, packedLight, packedOverlay, rgb);
+	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+
 	}
 
 	@Override
-	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int rgb) {
+		root.render(poseStack, vertexConsumer, packedLight, packedOverlay, rgb);
 	}
 }
