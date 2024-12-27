@@ -1,4 +1,4 @@
-package com.linnett.hidden_caves.item;
+package com.linnett.hidden_caves.common.item;
 
 import com.linnett.hidden_caves.HiddenCaves;
 import net.minecraft.world.item.Item;

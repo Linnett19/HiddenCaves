@@ -1,8 +1,9 @@
 package com.linnett.hidden_caves;
 
-import com.linnett.hidden_caves.block.ModBlocks;
-import com.linnett.hidden_caves.item.ModCreativeTabs;
-import com.linnett.hidden_caves.item.ModItems;
+import com.linnett.hidden_caves.common.block.ModBlocks;
+import com.linnett.hidden_caves.common.entity.ModEntities;
+import com.linnett.hidden_caves.common.item.ModCreativeTabs;
+import com.linnett.hidden_caves.common.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -34,7 +35,7 @@ public class HiddenCaves {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-
+        ModEntities.register(modEventBus);
 
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -54,9 +55,12 @@ public class HiddenCaves {
 
 
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
+    public static class ClientModEvents
+    {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
+        public static void onClientSetup(FMLClientSetupEvent event)
+        {
+            EntityRenderers.register(ModEntities.GINGERBREAD_MAN_ENTITY.get(), GingerBreadRenderer::new);
 
         }
     }

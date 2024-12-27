@@ -1,7 +1,7 @@
-package com.linnett.hidden_caves.item;
+package com.linnett.hidden_caves.common.item;
 
 import com.linnett.hidden_caves.HiddenCaves;
-import com.linnett.hidden_caves.block.ModBlocks;
+import com.linnett.hidden_caves.common.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

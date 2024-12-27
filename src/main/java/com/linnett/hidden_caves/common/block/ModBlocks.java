@@ -1,13 +1,10 @@
-package com.linnett.hidden_caves.block;
+package com.linnett.hidden_caves.common.block;
 
 import com.linnett.hidden_caves.HiddenCaves;
-import com.linnett.hidden_caves.item.ModItems;
-import net.minecraft.util.valueproviders.UniformInt;
+import com.linnett.hidden_caves.common.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
