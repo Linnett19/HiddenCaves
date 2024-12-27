@@ -45,9 +45,9 @@ public class GingerBreadEntity extends Animal {
         return 0;
     }
 
-    public static final AnimationState idleAnimationState = new AnimationState();
+    public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState walkAnimationState = new AnimationState();
-    public static final AnimationState runAnimationState = new AnimationState();
+    public final AnimationState runAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
 
     @Override
