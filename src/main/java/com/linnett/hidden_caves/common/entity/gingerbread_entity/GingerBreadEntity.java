@@ -45,28 +45,28 @@ public class GingerBreadEntity extends Animal {
         return 0;
     }
 
-    public final AnimationState idleAnimationState = new AnimationState();
-    public final AnimationState walkAnimationState = new AnimationState();
-    public final AnimationState runAnimationState = new AnimationState();
-    private int idleAnimationTimeout = 0;
+//    public final AnimationState idleAnimationState = new AnimationState();
+//    public final AnimationState walkAnimationState = new AnimationState();
+//    public final AnimationState runAnimationState = new AnimationState();
+//    private int idleAnimationTimeout = 0;
 
     @Override
     public void tick() {
         super.tick();
 
-        if (this.level().isClientSide()) {
-            setupAnimationStates();
-        }
-    }
+//        if (this.level().isClientSide()) {
+//            setupAnimationStates();
+//        }
+   }
 
-    private void setupAnimationStates() {
-        if (this.idleAnimationTimeout <= 0) {
-            this.idleAnimationTimeout = 40;
-            this.idleAnimationState.start(this.tickCount);
-        } else {
-            --this.idleAnimationTimeout;
-        }
-    }
+//    private void setupAnimationStates() {
+//        if (this.idleAnimationTimeout <= 0) {
+//            this.idleAnimationTimeout = 40;
+//            this.idleAnimationState.start(this.tickCount);
+//        } else {
+//            --this.idleAnimationTimeout;
+//        }
+//    }
 
     public static AttributeSupplier.Builder createAttributes() {
         return createMobAttributes()
