@@ -4,7 +4,6 @@ package com.linnett.hidden_caves.common.entity.gingerbread_entity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -67,27 +66,6 @@ public class GingerBreadModel<T extends Entity> extends EntityModel<T> {
 		return LayerDefinition.create(meshdefinition, 32, 32);
 	}
 
-	private final HierarchicalModel animator = new HierarchicalModel<GingerBreadEntity>() {
-
-		private ModelPart head;
-
-		@Override
-		public ModelPart root() {
-			return root;
-		}
-
-		@Override
-		public void setupAnim(GingerBreadEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-			this.root().getAllParts().forEach(ModelPart::resetPose);
-			this.head.yRot = netHeadYaw * ((float) Math.PI / 180F);
-			this.head.xRot = headPitch * ((float) Math.PI / 180F);
-
-			this.animateWalk(GingerBreadAnimation.walking, limbSwing, limbSwingAmount, 2f, 2.5f);
-			this.animate(GingerBreadEntity.idleAnimationState, GingerBreadAnimation.idle, ageInTicks, 1f);
-			this.animate(GingerBreadEntity.runAnimationState, GingerBreadAnimation.run, ageInTicks, 1f);
-		}
-	};
-
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int rgb) {
 		root.render(poseStack, vertexConsumer, packedLight, packedOverlay, rgb);
@@ -95,6 +73,6 @@ public class GingerBreadModel<T extends Entity> extends EntityModel<T> {
 
 	@Override
 	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		animator.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-    }
+
+	}
 }
