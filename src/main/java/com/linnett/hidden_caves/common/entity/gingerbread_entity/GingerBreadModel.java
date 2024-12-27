@@ -82,7 +82,6 @@ public class GingerBreadModel<T extends Entity> extends EntityModel<T> {
 		root.render(poseStack, vertexConsumer, packedLight, packedOverlay, rgb);
 	}
 
-	@Override
 	public ModelPart root() {
 		return root;
 	}
