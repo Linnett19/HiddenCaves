@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "hidden_caves:underground_river",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 2432432,
+    "spacing": 4,
+    "separation": 2
+  }
+}

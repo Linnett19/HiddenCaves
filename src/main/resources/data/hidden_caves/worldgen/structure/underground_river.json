@@ -1,0 +1,10 @@
+{
+  "type": "hidden_caves:underground_river",
+  "biomes": "hidden_caves:underground_river",
+  "step": "raw_generation",
+  "start_height": {
+    "absolute": 0
+  },
+  "use_expansion_hack": false,
+  "spawn_overrides": {}
+}

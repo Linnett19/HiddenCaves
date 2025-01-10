@@ -12,6 +12,17 @@ repositories {
     maven {
         url "https://cursemaven.com"
     }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 base {
@@ -72,9 +83,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 dependencies {
-
-    implementation "curse.maven:cavelib-1114316:5785724"
-
+    implementation "maven.modrinth:cavelib:${cavelib_version_id}"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

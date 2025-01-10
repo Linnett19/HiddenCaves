@@ -1,7 +1,7 @@
 package com.linnett.hidden_caves.common.item;
 
 import com.linnett.hidden_caves.HiddenCaves;
-import com.linnett.hidden_caves.common.block.ModBlocks;
+import com.linnett.hidden_caves.common.block.HCBlockRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,10 +21,10 @@ public class ModCreativeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
 
 
-                        output.accept(ModBlocks.RIVER_SLATE);
-                        output.accept(ModBlocks.POLISHED_RIVER_SLATE);
-                        output.accept(ModBlocks.MARBLE);
-                        output.accept(ModBlocks.POLISHED_MARBLE);
+                        output.accept(HCBlockRegistry.RIVER_SLATE);
+                        output.accept(HCBlockRegistry.POLISHED_RIVER_SLATE);
+                        output.accept(HCBlockRegistry.MARBLE);
+                        output.accept(HCBlockRegistry.POLISHED_MARBLE);
 
 
 
