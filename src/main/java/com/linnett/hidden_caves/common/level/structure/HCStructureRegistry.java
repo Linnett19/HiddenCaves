@@ -9,11 +9,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class HCStructureRegistry {
     public static final DeferredRegister<StructureType<?>> DEF_REG = DeferredRegister.create(Registries.STRUCTURE_TYPE, HiddenCaves.MODID);
 
-    public static final RegistryObject<StructureType<UndergroundRiverStructure>> UNDERGROUND_RIVER_STRUCTURE = DEF_REG.register(
-            "underground_river_structure",
-            () -> () -> UndergroundRiverStructure.CODEC
-    );
-
 
 
 }
