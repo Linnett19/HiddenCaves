@@ -1,12 +1,14 @@
 package com.linnett.hidden_caves;
 
+import com.b04ka.cavelib.deprecated.ExpandedBiomes;
 import com.linnett.hidden_caves.common.block.ModBlocks;
-import com.linnett.hidden_caves.common.entity.ModEntities;
-import com.linnett.hidden_caves.common.entity.gingerbread_entity.GingerBreadRenderer;
 import com.linnett.hidden_caves.common.item.ModCreativeTabs;
 import com.linnett.hidden_caves.common.item.ModItems;
+import com.linnett.hidden_caves.common.level.biome.UndergroundRiverBiome;
+import com.linnett.hidden_caves.common.level.structure.HCStructureRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.level.dimension.LevelStem;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -20,6 +22,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 
+import static com.linnett.hidden_caves.common.level.biome.UndergroundRiverBiome.UNDERGROUND_RIVER;
 import static net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion.MOD_ID;
 
 
@@ -37,17 +40,18 @@ public class HiddenCaves {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-        ModEntities.register(modEventBus);
-
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
+    private void commonSetup(final FMLCommonSetupEvent event){
+        UndergroundRiverBiome.init();
 
     }
 
-
+    public static void init(){
+        ExpandedBiomes.addExpandedBiome(UNDERGROUND_RIVER, LevelStem.OVERWORLD);
+    }
 
 
     @SubscribeEvent
@@ -62,7 +66,6 @@ public class HiddenCaves {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            EntityRenderers.register(ModEntities.GINGERBREAD_MAN_ENTITY.get(), GingerBreadRenderer::new);
 
         }
     }

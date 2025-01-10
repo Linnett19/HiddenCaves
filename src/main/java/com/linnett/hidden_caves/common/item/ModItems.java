@@ -10,13 +10,9 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(HiddenCaves.MODID);
 
 
-
-
     public static final DeferredItem<Item> BUTTER_PIECE = ITEMS.register("butter_piece",
             () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> CHOCOLATE_BAR = ITEMS.register("chocolate_bar",
-            () -> new Item(new Item.Properties()));
 
 
 

@@ -25,7 +25,7 @@ updateJSONURL = "https://discord.gg/6exDHFuMh2" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-#logoFile="hidden_caves.png" #optional
+logoFile="assets/hidden_caves/logo.png"  #optional
 # A text field displayed in the mod UI
 #credits="" #optional
 # A text field displayed in the mod UI

@@ -15,19 +15,17 @@ public class ModCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, HiddenCaves.MODID);
 
-    public static final Supplier<CreativeModeTab> DOUGH_TRENCHES = CREATIVE_MODE_TAB.register("dough_trenches",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CHOCOLATE_BAR.get()))
+    public static final Supplier<CreativeModeTab> UNDERGROUND_RIVER = CREATIVE_MODE_TAB.register("underground_river",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.BUTTER_PIECE.get()))
                     .title(Component.translatable("creativetab.hidden_caves.dough_trenches"))
                     .displayItems((itemDisplayParameters, output) -> {
 
 
-                        output.accept(ModItems.BUTTER_PIECE);
-                        output.accept(ModItems.CHOCOLATE_BAR);
-                        output.accept(ModBlocks.BUTTER_BLOCK);
-                        output.accept(ModBlocks.CAKE_LAYER);
-                        output.accept(ModBlocks.CHOCOLATE_BLOCK);
-                        output.accept(ModBlocks.CHISELED_CHOCOLATE_BLOCK);
-                        ModBlocks.FROSTED_CAKE_LAYERS.forEach(output::accept);
+                        output.accept(ModBlocks.RIVER_SLATE);
+                        output.accept(ModBlocks.POLISHED_RIVER_SLATE);
+                        output.accept(ModBlocks.MARBLE);
+                        output.accept(ModBlocks.POLISHED_MARBLE);
+
 
 
                     }).build());

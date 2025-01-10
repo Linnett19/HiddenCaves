@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "hidden_caves:item/chocolate_bar"
-  }
-}
