@@ -12,8 +12,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.LevelStem;
+import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
+import net.minecraft.world.phys.Vec3;
 
 public class UndergroundRiverBiome {
     public static final ResourceKey<Biome> UNDERGROUND_RIVER = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(HiddenCaves.MODID, "underground_river"));
@@ -26,12 +29,18 @@ public class UndergroundRiverBiome {
         SurfaceRules.RuleSource riverSlate = SurfaceRules.state(HCBlockRegistry.RIVER_SLATE.get().defaultBlockState());
         SurfaceRules.RuleSource marbel = SurfaceRules.state(HCBlockRegistry.MARBLE.get().defaultBlockState());
         SurfaceRules.RuleSource nacer = SurfaceRules.state(HCBlockRegistry.NACRE.get().defaultBlockState());
+        SurfaceRules.RuleSource dirt = SurfaceRules.state(Blocks.DIRT.defaultBlockState());
+        SurfaceRules.RuleSource packedMud = SurfaceRules.state(Blocks.PACKED_MUD.defaultBlockState());
+        SurfaceRules.RuleSource dirtOrPackedMud = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.GRAVEL, -0.12D, 0.2D), packedMud), dirt);
+        SurfaceRules.ConditionSource isUnderwater = SurfaceRules.waterBlockCheck(0, 0);
         SurfaceRules.ConditionSource nacerCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.2F, 0.4F, 40, 6F, 3);
         return SurfaceRules.sequence(CaveSurfaceRules.bedrock(), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, riverSlate), SurfaceRules.ifTrue(nacerCondition, nacer), marbel);
     }
 
+    private static final Vec3 BLUE_LIGHT_COLOR = new Vec3(0.3412, 0.7255, 1.0);
+
     public static void init() {
-        CaveBiomeVisuals.getBuilder().setBiome(UNDERGROUND_RIVER).setAmbientLight(0.1F).build();
+        CaveBiomeVisuals.getBuilder().setBiome(UNDERGROUND_RIVER).setAmbientLight(0.1F).setFogNearness(10F).setSkyOverride(1F).setLightColorOverride(BLUE_LIGHT_COLOR).build();
         CaveSurfaceRules.addRule(UNDERGROUND_RIVER, createUndergroundRiverRules());
         ExpandedBiomes.addExpandedBiome(UNDERGROUND_RIVER, LevelStem.OVERWORLD);
         BiomeGenerationConfig.addBiome(UNDERGROUND_RIVER, UNDERGROUND_RIVER_CONDITION);
