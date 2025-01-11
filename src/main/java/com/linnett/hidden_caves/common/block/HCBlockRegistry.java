@@ -36,7 +36,9 @@ public class HCBlockRegistry {
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops()));
 
-
+    public static final DeferredBlock<Block> NACRE = registerBlock("nacre",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops()));
 
 
 

@@ -2,6 +2,7 @@ package com.linnett.hidden_caves.common.level.structure;
 
 import com.b04ka.cavelib.structure.AbstractCaveGenerationStructure;
 import com.b04ka.cavelib.structure.piece.UndergroundLakeStructurePiece;
+import com.linnett.hidden_caves.common.block.HCBlockRegistry;
 import com.linnett.hidden_caves.common.level.biome.UndergroundRiverBiome;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
@@ -22,7 +23,12 @@ public class UndergroundRiverStructure extends AbstractCaveGenerationStructure {
 
     @Override
     protected StructurePiece createPiece(BlockPos offset, BlockPos center, int heightBlocks, int widthBlocks, RandomState randomState) {
-        return new UndergroundLakeStructurePiece(offset, center, heightBlocks, widthBlocks, UndergroundRiverBiome.UNDERGROUND_RIVER, Blocks.PRISMARINE, Blocks.PRISMARINE, Blocks.WATER, Fluids.WATER);
+        return new UndergroundLakeStructurePiece(offset, center, heightBlocks, widthBlocks,
+                UndergroundRiverBiome.UNDERGROUND_RIVER,
+                HCBlockRegistry.MARBLE.get(),
+                HCBlockRegistry.RIVER_SLATE.get(),
+                Blocks.CAVE_AIR,
+                Fluids.EMPTY);
     }
 
     @Override
@@ -32,7 +38,7 @@ public class UndergroundRiverStructure extends AbstractCaveGenerationStructure {
 
     @Override
     public int getWidthRadius(WorldgenRandom random) {
-        return 100;
+        return 300;
     }
 
     @Override

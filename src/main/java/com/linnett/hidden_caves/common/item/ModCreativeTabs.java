@@ -16,7 +16,7 @@ public class ModCreativeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, HiddenCaves.MODID);
 
     public static final Supplier<CreativeModeTab> UNDERGROUND_RIVER = CREATIVE_MODE_TAB.register("underground_river",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.RIVER_SLATE.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(HCBlockRegistry.RIVER_SLATE.get()))
                     .title(Component.translatable("creativetab.hidden_caves.dough_trenches"))
                     .displayItems((itemDisplayParameters, output) -> {
 
