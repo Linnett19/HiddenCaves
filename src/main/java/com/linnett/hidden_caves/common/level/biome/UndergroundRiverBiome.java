@@ -1,5 +1,6 @@
 package com.linnett.hidden_caves.common.level.biome;
 
+import com.b04ka.cavelib.biome.CaveBiomeVisuals;
 import com.b04ka.cavelib.deprecated.BiomeGenerationConfig;
 import com.b04ka.cavelib.deprecated.BiomeGenerationNoiseCondition;
 import com.b04ka.cavelib.deprecated.ExpandedBiomes;
@@ -29,10 +30,8 @@ public class UndergroundRiverBiome {
         return SurfaceRules.sequence(CaveSurfaceRules.bedrock(), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, riverSlate), SurfaceRules.ifTrue(nacerCondition, nacer), marbel);
     }
 
-    public static CaveBiomeVisulals.Builder builder = new CaveBiomeVisulals.Builder();
-
     public static void init() {
-        builder.setBiome(UNDERGROUND_RIVER).setAmbientLight(0.1F).build();
+        CaveBiomeVisuals.getBuilder().setBiome(UNDERGROUND_RIVER).setAmbientLight(0.1F).build();
         CaveSurfaceRules.addRule(UNDERGROUND_RIVER, createUndergroundRiverRules());
         ExpandedBiomes.addExpandedBiome(UNDERGROUND_RIVER, LevelStem.OVERWORLD);
         BiomeGenerationConfig.addBiome(UNDERGROUND_RIVER, UNDERGROUND_RIVER_CONDITION);
