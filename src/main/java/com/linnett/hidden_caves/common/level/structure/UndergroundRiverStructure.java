@@ -1,15 +1,18 @@
 package com.linnett.hidden_caves.common.level.structure;
 
 import com.b04ka.cavelib.structure.AbstractCaveGenerationStructure;
+import com.b04ka.cavelib.structure.piece.UndergroundLakeStructurePiece;
 import com.linnett.hidden_caves.common.block.HCBlockRegistry;
 import com.linnett.hidden_caves.common.level.biome.UndergroundRiverBiome;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructureType;
+import net.minecraft.world.level.material.Fluids;
 
 public class UndergroundRiverStructure extends AbstractCaveGenerationStructure {
     public static final MapCodec<UndergroundRiverStructure> CODEC = simpleCodec((settings) -> new UndergroundRiverStructure(settings));
@@ -20,12 +23,13 @@ public class UndergroundRiverStructure extends AbstractCaveGenerationStructure {
 
     @Override
     protected StructurePiece createPiece(BlockPos offset, BlockPos center, int heightBlocks, int widthBlocks, RandomState randomState) {
-        return new CanyonStructurePiece(offset, center, heightBlocks, widthBlocks,
-                HCBlockRegistry.RIVER_SLATE.get(),
+        return new UndergroundLakeStructurePiece(offset, center, heightBlocks, widthBlocks,
+                UndergroundRiverBiome.UNDERGROUND_RIVER,
                 HCBlockRegistry.MARBLE.get(),
-                HCBlockRegistry.NACRE.get());
+                HCBlockRegistry.RIVER_SLATE.get(),
+                Blocks.WATER,
+                Fluids.WATER);
     }
-
 
     @Override
     public int getGenerateYHeight(WorldgenRandom random, int x, int y) {

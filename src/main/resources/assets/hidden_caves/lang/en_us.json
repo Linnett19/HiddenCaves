@@ -1,33 +1,10 @@
 {
+  "block.hidden_caves.river_slate": "River Slate",
+  "block.hidden_caves.polished_river_slate": "Polished River Slate",
+  "block.hidden_caves.marble": "Marble",
+  "block.hidden_caves.polished_marble": "Polished Marble",
+  "block.hidden_caves.nacre": "Nacre",
+  "block.hidden_caves.polished_nacre": "Polished Nacre",
 
-  "item.hidden_caves.butter_piece": "Piece of Butter",
-  "block.hidden_caves.butter_block": "Butter Block",
-
-
-  "item.hidden_caves.chocolate_bar": "Bar of Chocolate",
-  "block.hidden_caves.chiseled_chocolate_block": "Chiseled Chocolate Block",
-  "block.hidden_caves.chocolate_block": "Chocolate Block",
-
-
-  "block.hidden_caves.cake_layer": "Cake Layer Block",
-  "block.hidden_caves.red_frosted_cake_layer": "Red Frosted Cake Layer",
-  "block.hidden_caves.orange_frosted_cake_layer": "Orange Frosted Cake Layer",
-  "block.hidden_caves.yellow_frosted_cake_layer": "Yellow Frosted Cake Layer",
-  "block.hidden_caves.lime_frosted_cake_layer": "Lime Frosted Cake Layer",
-  "block.hidden_caves.green_frosted_cake_layer": "Green Frosted Cake Layer",
-  "block.hidden_caves.light_blue_frosted_cake_layer": "Light Blue Frosted Cake Layer",
-  "block.hidden_caves.cyan_frosted_cake_layer": "Cyan Frosted Cake Layer",
-  "block.hidden_caves.blue_frosted_cake_layer": "Blue Frosted Cake Layer",
-  "block.hidden_caves.purple_frosted_cake_layer": "Purple Frosted Cake Layer",
-  "block.hidden_caves.magenta_frosted_cake_layer": "Magenta Frosted Cake Layer",
-  "block.hidden_caves.pink_frosted_cake_layer": "Pink Frosted Cake Layer",
-  "block.hidden_caves.brown_frosted_cake_layer": "Brown Frosted Cake Layer",
-  "block.hidden_caves.white_frosted_cake_layer": "White Frosted Cake Layer",
-  "block.hidden_caves.gray_frosted_cake_layer": "Gray Frosted Cake Layer",
-  "block.hidden_caves.light_gray_frosted_cake_layer": "Light Gray Frosted Cake Layer",
-  "block.hidden_caves.black_frosted_cake_layer": "Black Frosted Cake Layer",
-
-
-
-  "creativetab.hidden_caves.dough_trenches": "Dough Trenches"
+  "creativetab.hidden_caves.underground_river": "Underground River"
 }
