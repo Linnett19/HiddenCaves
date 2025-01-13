@@ -20,8 +20,8 @@ public class UndergroundRiverStructure extends AbstractCaveGenerationStructure {
 
     @Override
     protected StructurePiece createPiece(BlockPos offset, BlockPos center, int heightBlocks, int widthBlocks, RandomState randomState) {
-        return new CanyonStructurePiece(offset, center, heightBlocks, widthBlocks,
-                HCBlockRegistry.RIVER_SLATE.get(),
+        return new UndergroundOceanStructurePiece(
+                offset, center, heightBlocks, widthBlocks,
                 HCBlockRegistry.MARBLE.get(),
                 HCBlockRegistry.NACRE.get());
     }
@@ -29,7 +29,7 @@ public class UndergroundRiverStructure extends AbstractCaveGenerationStructure {
 
     @Override
     public int getGenerateYHeight(WorldgenRandom random, int x, int y) {
-        return random.nextInt(30) - 25;
+        return 0;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class UndergroundRiverStructure extends AbstractCaveGenerationStructure {
 
     @Override
     public int getHeightRadius(WorldgenRandom random, int seaLevel) {
-        return 50;
+        return 70;
     }
 
     @Override
