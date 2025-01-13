@@ -5,6 +5,7 @@ import com.linnett.hidden_caves.common.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -22,23 +23,38 @@ public class HCBlockRegistry {
 
     public static final DeferredBlock<Block> RIVER_SLATE = registerBlock("river_slate",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()));
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.TUFF)));
 
     public static final DeferredBlock<Block> POLISHED_RIVER_SLATE = registerBlock("polished_river_slate",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()));
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.POLISHED_TUFF)));
 
     public static final DeferredBlock<Block> MARBLE = registerBlock("marble",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()));
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.BASALT)));
 
     public static final DeferredBlock<Block> POLISHED_MARBLE = registerBlock("polished_marble",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()));
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.BASALT)));
 
     public static final DeferredBlock<Block> NACRE = registerBlock("nacre",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()));
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.MUD)));
+
+    public static final DeferredBlock<Block> POLISHED_NACRE = registerBlock("polished_nacre",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.MUD_BRICKS)));
+
+
+
+
+
 
 
 

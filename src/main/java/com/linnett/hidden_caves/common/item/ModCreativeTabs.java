@@ -17,7 +17,7 @@ public class ModCreativeTabs {
 
     public static final Supplier<CreativeModeTab> UNDERGROUND_RIVER = CREATIVE_MODE_TAB.register("underground_river",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(HCBlockRegistry.RIVER_SLATE.get()))
-                    .title(Component.translatable("creativetab.hidden_caves.dough_trenches"))
+                    .title(Component.translatable("creativetab.hidden_caves.underground_river"))
                     .displayItems((itemDisplayParameters, output) -> {
 
 
@@ -25,8 +25,8 @@ public class ModCreativeTabs {
                         output.accept(HCBlockRegistry.POLISHED_RIVER_SLATE);
                         output.accept(HCBlockRegistry.MARBLE);
                         output.accept(HCBlockRegistry.POLISHED_MARBLE);
-
-
+                        output.accept(HCBlockRegistry.NACRE);
+                        output.accept(HCBlockRegistry.POLISHED_NACRE);
 
                     }).build());
 
