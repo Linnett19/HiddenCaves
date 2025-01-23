@@ -12,11 +12,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.phys.Vec3;
+
 
 public class UndergroundRiverBiome {
     public static final ResourceKey<Biome> UNDERGROUND_RIVER = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(HiddenCaves.MODID, "underground_river"));
@@ -29,33 +28,26 @@ public class UndergroundRiverBiome {
         SurfaceRules.RuleSource riverSlate = SurfaceRules.state(HCBlockRegistry.RIVER_SLATE.get().defaultBlockState());
         SurfaceRules.RuleSource marble = SurfaceRules.state(HCBlockRegistry.MARBLE.get().defaultBlockState());
         SurfaceRules.RuleSource nacre = SurfaceRules.state(HCBlockRegistry.NACRE.get().defaultBlockState());
-        SurfaceRules.RuleSource dirt = SurfaceRules.state(Blocks.DIRT.defaultBlockState());
-        SurfaceRules.RuleSource packedMud = SurfaceRules.state(Blocks.PACKED_MUD.defaultBlockState());
 
-        SurfaceRules.RuleSource dirtOrPackedMud = SurfaceRules.sequence(
-                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.GRAVEL, -0.12D, 0.2D), packedMud),
-                dirt
-        );
-
-        SurfaceRules.ConditionSource isUnderwater = SurfaceRules.waterBlockCheck(0, 0);
-
-        SurfaceRules.ConditionSource nacreCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.2F, 0.4F, 40, 6F, 3);
+        SurfaceRules.ConditionSource marbleCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.3F, 0.4F, 50, 5F, 2);
+        SurfaceRules.ConditionSource nacreCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.5F, 0.3F, 60, 7F, 3);
+        SurfaceRules.ConditionSource riverCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.7F, 0.2F, 70, 9F, 4);
 
         return SurfaceRules.sequence(
                 CaveSurfaceRules.bedrock(),
-
                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, riverSlate),
-
-                SurfaceRules.ifTrue(nacreCondition, nacre), riverSlate, SurfaceRules.ifTrue(isUnderwater, dirtOrPackedMud)
+                SurfaceRules.ifTrue(marbleCondition, marble),
+                SurfaceRules.ifTrue(nacreCondition, nacre),
+                SurfaceRules.ifTrue(riverCondition, riverSlate)
         );
     }
 
 
-    private static final Vec3 BLUE_LIGHT_COLOR = new Vec3(0.886, 1.0, 0.937);
+    private static final Vec3 BLUE_LIGHT_COLOR = new Vec3(0.6902, 0.7804, 0.9490);
 
 
     public static void init() {
-        CaveBiomeVisuals.getBuilder().setBiome(UNDERGROUND_RIVER).setAmbientLight(0.05F).setFogNearness(10F).setSkyOverride(1F).setLightColorOverride(BLUE_LIGHT_COLOR).build();
+        CaveBiomeVisuals.getBuilder().setBiome(UNDERGROUND_RIVER).setAmbientLight(0.2F).setFogNearness(1F).setSkyOverride(1F).setLightColorOverride(BLUE_LIGHT_COLOR).build();
         CaveSurfaceRules.addRule(UNDERGROUND_RIVER, createUndergroundRiverRules());
         ExpandedBiomes.addExpandedBiome(UNDERGROUND_RIVER, LevelStem.OVERWORLD);
         BiomeGenerationConfig.addBiome(UNDERGROUND_RIVER, UNDERGROUND_RIVER_CONDITION);

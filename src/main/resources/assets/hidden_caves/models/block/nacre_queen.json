@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"0": "hidden_caves:block/chess/river_slate_queen",
-		"particle": "hidden_caves:block/chess/river_slate_queen"
+		"0": "hidden_caves:block/chess/nacre_queen",
+		"particle": "hidden_caves:block/chess/nacre_queen"
 	},
 	"render_type": "cutout",
 

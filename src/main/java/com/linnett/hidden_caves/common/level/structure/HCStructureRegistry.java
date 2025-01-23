@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+
 import java.util.function.Supplier;
 
 
@@ -13,4 +14,9 @@ public class HCStructureRegistry {
 
     public static final Supplier<StructureType<UndergroundRiverStructure>> UNDERGROUND_RIVER_STRUCTURE = DEF_REG.register(
             "underground_river", () -> () -> UndergroundRiverStructure.CODEC);
+
+
+
+
+
 }

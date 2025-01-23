@@ -1,9 +1,10 @@
 {
-	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "hidden_caves:block/chess/river_slate_king",
 		"particle": "hidden_caves:block/chess/river_slate_king"
 	},
+	"render_type": "cutout",
+
 	"elements": [
 		{
 			"from": [4, 0, 4],

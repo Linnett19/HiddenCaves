@@ -1,6 +1,7 @@
 package com.linnett.hidden_caves;
 
 import com.b04ka.cavelib.deprecated.ExpandedBiomes;
+import com.linnett.hidden_caves.client.ClientModEvent;
 import com.linnett.hidden_caves.common.block.HCBlockRegistry;
 import com.linnett.hidden_caves.common.item.ModCreativeTabs;
 import com.linnett.hidden_caves.common.item.ModItems;
@@ -33,6 +34,7 @@ public class HiddenCaves {
     public HiddenCaves(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
         NeoForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.register(ClientModEvent.class);
 
         HCStructureRegistry.DEF_REG.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
@@ -42,6 +44,7 @@ public class HiddenCaves {
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
+
 
     private void commonSetup(final FMLCommonSetupEvent event){
         UndergroundRiverBiome.init();
