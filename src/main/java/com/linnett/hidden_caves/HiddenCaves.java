@@ -1,13 +1,15 @@
 package com.linnett.hidden_caves;
 
 import com.b04ka.cavelib.deprecated.ExpandedBiomes;
-import com.linnett.hidden_caves.client.ClientModEvent;
 import com.linnett.hidden_caves.common.block.HCBlockRegistry;
+import com.linnett.hidden_caves.common.entity.client.GeckoRenderer;
 import com.linnett.hidden_caves.common.item.ModCreativeTabs;
 import com.linnett.hidden_caves.common.item.ModItems;
 import com.linnett.hidden_caves.common.level.biome.UndergroundRiverBiome;
 import com.linnett.hidden_caves.common.level.structure.HCStructureRegistry;
+import com.linnett.hidden_caves.common.entity.ModEntities;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -34,10 +36,13 @@ public class HiddenCaves {
     public HiddenCaves(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
         NeoForge.EVENT_BUS.register(this);
-        NeoForge.EVENT_BUS.register(ClientModEvent.class);
 
         HCStructureRegistry.DEF_REG.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
+
+        ModEntities.register(modEventBus);
+
+
 
         ModItems.register(modEventBus);
         HCBlockRegistry.register(modEventBus);
@@ -68,7 +73,7 @@ public class HiddenCaves {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            EntityRenderers.register(ModEntities.GECKO.get(), GeckoRenderer::new);
         }
     }
 }

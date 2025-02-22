@@ -40,12 +40,12 @@ public class UndergroundRiverStructure extends AbstractCaveGenerationStructure {
 
     @Override
     public int getWidthRadius(WorldgenRandom random) {
-        return 100;
+        return 70;
     }
 
     @Override
     public int getHeightRadius(WorldgenRandom random, int seaLevel) {
-        return 70;
+        return 50;
     }
 
     @Override

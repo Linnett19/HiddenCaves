@@ -1,0 +1,25 @@
+{
+  "block.hidden_caves.river_slate": "Речной сланец",
+  "block.hidden_caves.polished_river_slate": "Полированный речной сланец",
+  "block.hidden_caves.marble": "Мрамор",
+  "block.hidden_caves.polished_marble": "Полированный мрамор",
+  "block.hidden_caves.nacre": "Перламутр",
+  "block.hidden_caves.polished_nacre": "Полированный перламутр",
+
+  "block.hidden_caves.river_slate_pawn": "Пешка из речного сланца",
+  "block.hidden_caves.river_slate_rook": "Ладья из речного сланца",
+  "block.hidden_caves.river_slate_bishop": "Слон из речного сланца",
+  "block.hidden_caves.river_slate_knight": "Конь из речного сланца",
+  "block.hidden_caves.river_slate_queen": "Ферзь из речного сланца",
+  "block.hidden_caves.river_slate_king": "Король из речного сланца",
+
+  "block.hidden_caves.nacre_pawn": "Пешка из перламутра",
+  "block.hidden_caves.nacre_rook": "Ладья из перламутра",
+  "block.hidden_caves.nacre_bishop": "Слон из перламутра",
+  "block.hidden_caves.nacre_knight": "Конь из перламутра",
+  "block.hidden_caves.nacre_queen": "Ферзь из перламутра",
+  "block.hidden_caves.nacre_king": "Король из перламутра",
+
+  "creativetab.hidden_caves.underground_river": "Подземная река"
+
+}

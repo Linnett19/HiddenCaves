@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.function.Supplier;
 
@@ -114,6 +113,16 @@ public class HCBlockRegistry {
             () -> new ChessBlock(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> NACRE_LAPIS_ORE = registerBlock("nacre_lapis_ore",
+            () -> new ChessBlock(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> MARBLE_GOLD_ORE = registerBlock("marble_gold_ore",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.BASALT)));
 
 
 

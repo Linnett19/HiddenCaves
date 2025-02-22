@@ -1,8 +1,10 @@
 package com.linnett.hidden_caves.common.item;
 
 import com.linnett.hidden_caves.HiddenCaves;
+import com.linnett.hidden_caves.common.entity.ModEntities;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -14,7 +16,9 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
 
-
+    public static final DeferredItem<Item> GECKO_SPAWN_EGG = ITEMS.register("gecko_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.GECKO, 0x31afaf, 0xffac00,
+                    new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {

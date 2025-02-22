@@ -6,5 +6,21 @@
   "block.hidden_caves.nacre": "Nacre",
   "block.hidden_caves.polished_nacre": "Polished Nacre",
 
+  "block.hidden_caves.river_slate_pawn": "River Slate Pawn",
+  "block.hidden_caves.river_slate_rook": "River Slate Rook",
+  "block.hidden_caves.river_slate_bishop": "River Slate Bishop",
+  "block.hidden_caves.river_slate_knight": "River Slate Knight",
+  "block.hidden_caves.river_slate_queen": "River Slate Queen",
+  "block.hidden_caves.river_slate_king": "River Slate King",
+
+  "block.hidden_caves.nacre_pawn": "Nacre Pawn",
+  "block.hidden_caves.nacre_rook": "Nacre Rook",
+  "block.hidden_caves.nacre_bishop": "Nacre Bishop",
+  "block.hidden_caves.nacre_knight": "Nacre Knight",
+  "block.hidden_caves.nacre_queen": "Nacre Queen",
+  "block.hidden_caves.nacre_king": "Nacre King",
+
   "creativetab.hidden_caves.underground_river": "Underground River"
+
 }
+
