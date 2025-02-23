@@ -2,12 +2,10 @@ package com.linnett.hidden_caves;
 
 import com.b04ka.cavelib.deprecated.ExpandedBiomes;
 import com.linnett.hidden_caves.common.block.HCBlockRegistry;
-import com.linnett.hidden_caves.common.entity.client.GeckoRenderer;
 import com.linnett.hidden_caves.common.item.ModCreativeTabs;
 import com.linnett.hidden_caves.common.item.ModItems;
 import com.linnett.hidden_caves.common.level.biome.UndergroundRiverBiome;
 import com.linnett.hidden_caves.common.level.structure.HCStructureRegistry;
-import com.linnett.hidden_caves.common.entity.ModEntities;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.dimension.LevelStem;
@@ -40,7 +38,6 @@ public class HiddenCaves {
         HCStructureRegistry.DEF_REG.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
 
-        ModEntities.register(modEventBus);
 
 
 
@@ -68,12 +65,11 @@ public class HiddenCaves {
 
 
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
+    public static class ClientModEvents {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            EntityRenderers.register(ModEntities.GECKO.get(), GeckoRenderer::new);
+        public static void onClientSetup(FMLClientSetupEvent event) {
+
+
         }
     }
 }

@@ -37,6 +37,10 @@ public class ModCreativeTabs {
                         output.accept(HCBlockRegistry.RIVER_SLATE_QUEEN);
                         output.accept(HCBlockRegistry.RIVER_SLATE_KING);
 
+                        output.accept(HCBlockRegistry.CAVE_MOSS);
+                        output.accept(HCBlockRegistry.RIVER_GRASS);
+                        output.accept(HCBlockRegistry.CAVE_LILLY_PAD);
+
                         output.accept(HCBlockRegistry.NACRE_PAWN);
                         output.accept(HCBlockRegistry.NACRE_ROOK);
                         output.accept(HCBlockRegistry.NACRE_BISHOP);
@@ -44,7 +48,6 @@ public class ModCreativeTabs {
                         output.accept(HCBlockRegistry.NACRE_QUEEN);
                         output.accept(HCBlockRegistry.NACRE_KING);
 
-                        output.accept(ModItems.GECKO_SPAWN_EGG);
                         output.accept(ModItems.BUTTER_PIECE);
 
                     }).build());

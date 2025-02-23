@@ -1,0 +1,7 @@
+{
+  "parent": "block/template_lily_pad",
+  "textures": {
+    "texture": "hidden_caves:block/cave_lily_pad"
+  }
+}
+

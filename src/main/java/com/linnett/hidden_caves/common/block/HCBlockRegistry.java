@@ -1,12 +1,13 @@
 package com.linnett.hidden_caves.common.block;
 
 import com.linnett.hidden_caves.HiddenCaves;
+import com.linnett.hidden_caves.common.block.custon_blocks.CaveMoss;
 import com.linnett.hidden_caves.common.block.custon_blocks.ChessBlock;
+import com.linnett.hidden_caves.common.block.custon_blocks.RiverGrassBlock;
 import com.linnett.hidden_caves.common.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -123,7 +124,23 @@ public class HCBlockRegistry {
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops()
                     .sound(SoundType.BASALT)));
+    
+    public static final DeferredBlock<Block> RIVER_GRASS = registerBlock("river_grass",
+            () -> new RiverGrassBlock(BlockBehaviour.Properties.of()
+                    .noCollission()
+                    .instabreak()
+                    .sound(SoundType.GRASS)));
 
+    public static final DeferredBlock<Block> CAVE_LILLY_PAD = registerBlock("cave_lily_pad",
+            () -> new WaterlilyBlock(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.BASALT)));
+
+
+    public static final DeferredBlock<Block> CAVE_MOSS = registerBlock("cave_moss",
+            () -> new CaveMoss(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.MOSS)));
 
 
 

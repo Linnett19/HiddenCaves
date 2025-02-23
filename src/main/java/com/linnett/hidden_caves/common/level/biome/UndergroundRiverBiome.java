@@ -12,7 +12,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.SurfaceRules;
@@ -30,23 +29,30 @@ public class UndergroundRiverBiome {
         SurfaceRules.RuleSource riverSlate = SurfaceRules.state(HCBlockRegistry.RIVER_SLATE.get().defaultBlockState());
         SurfaceRules.RuleSource marble = SurfaceRules.state(HCBlockRegistry.MARBLE.get().defaultBlockState());
         SurfaceRules.RuleSource nacre = SurfaceRules.state(HCBlockRegistry.NACRE.get().defaultBlockState());
-        SurfaceRules.RuleSource moss = SurfaceRules.state(Blocks.MOSS_BLOCK.defaultBlockState());
+        SurfaceRules.RuleSource moss = SurfaceRules.state(HCBlockRegistry.CAVE_MOSS.get().defaultBlockState());
 
         SurfaceRules.ConditionSource marbleCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.3F, 0.4F, 50, 5F, 2);
         SurfaceRules.ConditionSource nacreCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.5F, 0.3F, 60, 7F, 3);
         SurfaceRules.ConditionSource riverCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.7F, 0.2F, 70, 9F, 4);
+        SurfaceRules.ConditionSource mossPatchCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.5F, 0.5F, 55, 10F, 5);
 
-        SurfaceRules.ConditionSource mossCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.2F, 0.3F, 40, 8F, 3);
+
 
         return SurfaceRules.sequence(
                 CaveSurfaceRules.bedrock(),
-                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, moss),
+                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                        SurfaceRules.ifTrue(mossPatchCondition, moss)
+                ),
+
                 SurfaceRules.ifTrue(marbleCondition, marble),
                 SurfaceRules.ifTrue(nacreCondition, nacre),
-                SurfaceRules.ifTrue(riverCondition, riverSlate),
-                SurfaceRules.ifTrue(mossCondition, moss)
+                SurfaceRules.ifTrue(riverCondition, riverSlate)
         );
     }
+
+
+
+
 
 
     private static final Vec3 BLUE_LIGHT_COLOR = new Vec3(0.6902, 0.7804, 0.9490);

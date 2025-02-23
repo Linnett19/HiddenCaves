@@ -27,18 +27,14 @@ public class UndergroundOceanStructurePiece extends CanyonStructurePiece {
         int cornerY = this.chunkCorner.getY();
         int cornerZ = this.chunkCorner.getZ();
 
-        BlockPos.MutableBlockPos carve = new BlockPos.MutableBlockPos(); // Переменная для хранения позиции карвинга
-        BlockPos.MutableBlockPos carveBelow = new BlockPos.MutableBlockPos(); // Переменная для проверки блока под текущим
+        BlockPos.MutableBlockPos carve = new BlockPos.MutableBlockPos();
+        BlockPos.MutableBlockPos carveBelow = new BlockPos.MutableBlockPos();
 
         carve.set(cornerX, cornerY, cornerZ);
 
         int minY = 25;
         int maxY = 30;
-        int waterLevel = 15;
-
-        if (maxY > waterLevel) {
-            maxY = waterLevel - 20;
-        }
+        int waterLevel = 30;
 
         for (int x = 0; x < 16; ++x) {
             for (int z = 0; z < 16; ++z) {
@@ -70,13 +66,29 @@ public class UndergroundOceanStructurePiece extends CanyonStructurePiece {
                 }
             }
         }
+
+        for (int x = 0; x < 16; ++x) {
+            for (int z = 0; z < 16; ++z) {
+                for (int y = minY; y <= maxY; ++y) {
+                    carve.set(cornerX + x, y, cornerZ + z);
+                    if (this.isNearEdge(carve)) {
+                        this.checkedSetBlock(level, carve, Blocks.STONE.defaultBlockState());
+                    }
+                }
+            }
+        }
+    }
+
+    private boolean isNearEdge(BlockPos.MutableBlockPos carve) {
+        return carve.distToLowCornerSqr((double) this.holeCenter.getX(), (double) carve.getY(), (double) this.holeCenter.getZ()) > (this.radius * 1.1);
     }
 
 
 
 
+
     private boolean inCircle(BlockPos.MutableBlockPos carve) {
-        float pillarNoise = (ACMath.sampleNoise3D(carve.getX(), (int) ((float) carve.getY() * 0.5F), carve.getZ(), 25.0F) + 1.0F) * 0.4F;
+        float pillarNoise = (ACMath.sampleNoise3D(carve.getX(), (int) ((float) carve.getY() * 0.5F), carve.getZ(), 40.0F) + 1.0F) * 0.4F;
         // pillarNoise отвечает за случайные "столбы" в пещере
 
         float verticalNoise = (ACMath.sampleNoise2D(carve.getX(), carve.getZ(), 20.0F) + 1.0F) * 0.1F -
@@ -87,7 +99,7 @@ public class UndergroundOceanStructurePiece extends CanyonStructurePiece {
         // distToCenter вычисляет расстояние до центра пещеры
 
         float f = this.getHeightOf(carve);
-        float f1 = (float) Math.pow((double) this.canyonStep(f, 40), 2.0);
+        float f1 = (float) Math.pow((double) this.canyonStep(f, 20), 2.0);
         // f1 отвечает за плавность формы
 
         float rawHeight = (float) Math.abs(this.holeCenter.getY() - carve.getY()) / ((float) this.height * 0.15F);
