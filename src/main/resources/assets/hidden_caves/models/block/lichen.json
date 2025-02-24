@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"0": "hidden_caves:block/cave_moss",
-		"particle": "hidden_caves:block/cave_moss"
+		"0": "hidden_caves:block/lichen",
+		"particle": "hidden_caves:block/lichen"
 	},
 	"render_type": "cutout",
 	"elements": [

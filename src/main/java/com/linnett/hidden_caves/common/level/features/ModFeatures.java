@@ -11,5 +11,7 @@ public class ModFeatures {
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(Registries.FEATURE, HiddenCaves.MODID);
 
-    public static final DeferredHolder<Feature<?>, CaveCalpe> CAVE_CALPE = FEATURES.register("cave_kelp", () -> new CaveCalpe(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, RiverGrassFeature> RIVER_GRASS_FEATURE = FEATURES.register("river_grass", () -> new RiverGrassFeature(NoneFeatureConfiguration.CODEC));
 }
+

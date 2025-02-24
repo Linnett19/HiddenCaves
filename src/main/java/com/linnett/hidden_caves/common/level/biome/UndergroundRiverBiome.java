@@ -29,7 +29,7 @@ public class UndergroundRiverBiome {
         SurfaceRules.RuleSource riverSlate = SurfaceRules.state(HCBlockRegistry.RIVER_SLATE.get().defaultBlockState());
         SurfaceRules.RuleSource marble = SurfaceRules.state(HCBlockRegistry.MARBLE.get().defaultBlockState());
         SurfaceRules.RuleSource nacre = SurfaceRules.state(HCBlockRegistry.NACRE.get().defaultBlockState());
-        SurfaceRules.RuleSource moss = SurfaceRules.state(HCBlockRegistry.CAVE_MOSS.get().defaultBlockState());
+        SurfaceRules.RuleSource moss = SurfaceRules.state(HCBlockRegistry.LICHEN.get().defaultBlockState());
 
         SurfaceRules.ConditionSource marbleCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.3F, 0.4F, 50, 5F, 2);
         SurfaceRules.ConditionSource nacreCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.5F, 0.3F, 60, 7F, 3);
@@ -58,14 +58,16 @@ public class UndergroundRiverBiome {
     private static final Vec3 BLUE_LIGHT_COLOR = new Vec3(0.6902, 0.7804, 0.9490);
 
 
+
+
     public static void init() {
         CaveBiomeVisuals.getBuilder()
                 .setBiome(UNDERGROUND_RIVER)
                 .setAmbientLight(0.2F)
                 .setSkyOverride(1F)
                 .setLightColorOverride(BLUE_LIGHT_COLOR)
-                .setFogNearness(0.3F)
-                .setWaterFogFarness(0.3F)
+                .setFogNearness(0.7F)
+                .setWaterFogFarness(0.9F)
                 .build();
 
         CaveSurfaceRules.addRule(UNDERGROUND_RIVER, createUndergroundRiverRules());

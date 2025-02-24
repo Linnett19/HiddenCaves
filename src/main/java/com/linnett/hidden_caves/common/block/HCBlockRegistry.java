@@ -3,6 +3,7 @@ package com.linnett.hidden_caves.common.block;
 import com.linnett.hidden_caves.HiddenCaves;
 import com.linnett.hidden_caves.common.block.custon_blocks.CaveMoss;
 import com.linnett.hidden_caves.common.block.custon_blocks.ChessBlock;
+import com.linnett.hidden_caves.common.block.custon_blocks.ChestNutStemBlock;
 import com.linnett.hidden_caves.common.block.custon_blocks.RiverGrassBlock;
 import com.linnett.hidden_caves.common.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -137,8 +138,13 @@ public class HCBlockRegistry {
                     .sound(SoundType.BASALT)));
 
 
-    public static final DeferredBlock<Block> CAVE_MOSS = registerBlock("cave_moss",
+    public static final DeferredBlock<Block> LICHEN = registerBlock("lichen",
             () -> new CaveMoss(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.MOSS)));
+
+    public static final DeferredBlock<Block> CHESTNUT_STEM = registerBlock("chestnut_stem",
+            () -> new ChestNutStemBlock(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops()
                     .sound(SoundType.MOSS)));
 

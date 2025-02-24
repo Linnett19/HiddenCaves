@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "hidden_caves:block/chestnut_stem"
+    },
+    "axis=x": {
+      "model": "hidden_caves:block/chestnut_stem",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z": {
+      "model": "hidden_caves:block/chestnut_stem",
+      "x": 90
+    }
+  }
+}

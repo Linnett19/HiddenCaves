@@ -1,7 +1,6 @@
 package com.linnett.hidden_caves.common.level.structure;
 
 import com.b04ka.cavelib.structure.AbstractCaveGenerationStructure;
-import com.b04ka.cavelib.structure.piece.CanyonStructurePiece;
 import com.b04ka.cavelib.structure.piece.UndergroundLakeStructurePiece;
 import com.linnett.hidden_caves.common.block.HCBlockRegistry;
 import com.linnett.hidden_caves.common.level.biome.UndergroundRiverBiome;

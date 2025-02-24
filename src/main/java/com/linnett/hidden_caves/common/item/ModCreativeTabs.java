@@ -37,7 +37,8 @@ public class ModCreativeTabs {
                         output.accept(HCBlockRegistry.RIVER_SLATE_QUEEN);
                         output.accept(HCBlockRegistry.RIVER_SLATE_KING);
 
-                        output.accept(HCBlockRegistry.CAVE_MOSS);
+                        output.accept(HCBlockRegistry.CHESTNUT_STEM);
+                        output.accept(HCBlockRegistry.LICHEN);
                         output.accept(HCBlockRegistry.RIVER_GRASS);
                         output.accept(HCBlockRegistry.CAVE_LILLY_PAD);
 
