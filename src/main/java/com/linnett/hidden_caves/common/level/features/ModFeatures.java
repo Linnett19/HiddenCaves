@@ -9,9 +9,11 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModFeatures {
 
-    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(Registries.FEATURE, HiddenCaves.MODID);
+    public static final DeferredRegister<Feature<?>> DEF_REG  = DeferredRegister.create(Registries.FEATURE, HiddenCaves.MODID);
+
+    public static final DeferredHolder<Feature<?>, RiverGrassFeature> RIVER_GRASS_FEATURE = DEF_REG .register("river_grass", () -> new RiverGrassFeature(NoneFeatureConfiguration.CODEC));
 
 
-    public static final DeferredHolder<Feature<?>, RiverGrassFeature> RIVER_GRASS_FEATURE = FEATURES.register("river_grass", () -> new RiverGrassFeature(NoneFeatureConfiguration.CODEC));
+
 }
 

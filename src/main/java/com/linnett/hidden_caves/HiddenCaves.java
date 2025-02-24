@@ -5,6 +5,7 @@ import com.linnett.hidden_caves.common.block.HCBlockRegistry;
 import com.linnett.hidden_caves.common.item.ModCreativeTabs;
 import com.linnett.hidden_caves.common.item.ModItems;
 import com.linnett.hidden_caves.common.level.biome.UndergroundRiverBiome;
+import com.linnett.hidden_caves.common.level.features.ModFeatures;
 import com.linnett.hidden_caves.common.level.structure.HCStructureRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -40,6 +41,7 @@ public class HiddenCaves {
 
 
 
+        ModFeatures.DEF_REG.register(modEventBus);
 
         ModItems.register(modEventBus);
         HCBlockRegistry.register(modEventBus);
