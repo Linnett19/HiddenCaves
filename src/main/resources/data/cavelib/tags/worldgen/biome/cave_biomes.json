@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "hidden_caves:underground_river"
+    "hidden_caves:underground_river",
+    "hidden_caves:lunar_crater"
   ]
 }

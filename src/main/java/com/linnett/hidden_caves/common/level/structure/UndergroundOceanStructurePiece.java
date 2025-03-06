@@ -88,7 +88,7 @@ public class UndergroundOceanStructurePiece extends CanyonStructurePiece {
 
 
     private boolean inCircle(BlockPos.MutableBlockPos carve) {
-        float pillarNoise = (ACMath.sampleNoise3D(carve.getX(), (int) ((float) carve.getY() * 0.5F), carve.getZ(), 40.0F) + 1.0F) * 0.4F;
+        float pillarNoise = (ACMath.sampleNoise3D(carve.getX(), (int) ((float) carve.getY() * 0.5F), carve.getZ(), 42.0F) + 1.0F) * 0.4F;
         // pillarNoise отвечает за случайные "столбы" в пещере
 
         float verticalNoise = (ACMath.sampleNoise2D(carve.getX(), carve.getZ(), 20.0F) + 1.0F) * 0.1F -

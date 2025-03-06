@@ -3,23 +3,33 @@
   "downfall": 0.4,
   "has_precipitation": true,
   "effects": {
-    "sky_color": 264203,
-    "fog_color": 924196,
-    "water_color": 370073,
-    "water_fog_color": 370073,
-    "grass_color": 11785728,
-    "foliage_color": 10601538
-  },
-  "particle": {
-    "options": {
-      "type": "hidden_caves:drop"
+    "particle": {
+      "options": {
+        "type": "hidden_caves:moon_ambient"
+      },
+      "probability": 0.00009
     },
-    "probability": 0.005
+    "sky_color": 0,
+    "fog_color": 2236962,
+    "water_color": 4737227,
+    "water_fog_color": 4737227,
+    "grass_color": 8421504,
+    "foliage_color": 7368816
   },
   "features": [
-    ["minecraft:ore_clay"],
-    ["minecraft:ore_gravel"]
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
   ],
+
   "precipitation": "rain",
   "spawn_costs": {},
   "creature_spawn_probability": 0.2,

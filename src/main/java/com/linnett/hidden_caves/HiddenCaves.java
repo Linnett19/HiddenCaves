@@ -4,9 +4,11 @@ import com.b04ka.cavelib.deprecated.ExpandedBiomes;
 import com.linnett.hidden_caves.common.block.HCBlockRegistry;
 import com.linnett.hidden_caves.common.item.ModCreativeTabs;
 import com.linnett.hidden_caves.common.item.ModItems;
+import com.linnett.hidden_caves.common.level.biome.LunarCraterBiome;
 import com.linnett.hidden_caves.common.level.biome.UndergroundRiverBiome;
 import com.linnett.hidden_caves.common.level.features.ModFeatures;
 import com.linnett.hidden_caves.common.level.structure.HCStructureRegistry;
+import com.linnett.hidden_caves.common.particle.ModParticleTypes;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.dimension.LevelStem;
@@ -35,23 +37,32 @@ public class HiddenCaves {
     public HiddenCaves(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
         NeoForge.EVENT_BUS.register(this);
-
         HCStructureRegistry.DEF_REG.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
-
-
-
         ModFeatures.DEF_REG.register(modEventBus);
 
         ModItems.register(modEventBus);
         HCBlockRegistry.register(modEventBus);
 
+
+        modEventBus.addListener(this::commonSetup);
+        ModParticleTypes.REGISTRY.register(modEventBus);
+
+
+
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+
+
+
+
     }
 
 
     private void commonSetup(final FMLCommonSetupEvent event){
         UndergroundRiverBiome.init();
+        LunarCraterBiome.init();
+
 
     }
 

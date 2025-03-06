@@ -53,6 +53,19 @@ public class ModCreativeTabs {
 
                     }).build());
 
+    public static final Supplier<CreativeModeTab> LUNAR_CRATER = CREATIVE_MODE_TAB.register("lunar_crater",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(HCBlockRegistry.MOON_STONE.get()))
+                    .title(Component.translatable("creativetab.hidden_caves.lunar_crater"))
+                    .displayItems((itemDisplayParameters, output) -> {
+
+
+                        output.accept(HCBlockRegistry.MOON_STONE);
+
+
+                    }).build());
+
+
+
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TAB.register(eventBus);
