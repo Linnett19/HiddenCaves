@@ -1,6 +1,8 @@
 package com.linnett.hidden_caves;
 
 import com.b04ka.cavelib.deprecated.ExpandedBiomes;
+import com.linnett.hidden_caves.client.misc.BiomeMusic;
+import com.linnett.hidden_caves.client.misc.BiomeMusicEntry;
 import com.linnett.hidden_caves.common.block.HCBlockRegistry;
 import com.linnett.hidden_caves.common.item.ModCreativeTabs;
 import com.linnett.hidden_caves.common.item.ModItems;
@@ -11,6 +13,8 @@ import com.linnett.hidden_caves.common.level.structure.HCStructureRegistry;
 import com.linnett.hidden_caves.common.particle.ModParticleTypes;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.resources.sounds.Sound;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -53,9 +57,7 @@ public class HiddenCaves {
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
 
-
-
-
+        BiomeMusic.initAll();
     }
 
 
