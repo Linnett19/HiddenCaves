@@ -78,12 +78,13 @@ public class HiddenCaves {
 
     }
 
+    @EventBusSubscriber(modid = "hidden_caves", bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public class ClientModEvents {
 
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(HCEntities.GRASSHOPPER.get(), GrasshopperRenderer::new);
         }
     }
+
 }

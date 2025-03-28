@@ -28,7 +28,7 @@ public class GrasshopperRenderer extends MobRenderer<GrasshopperEntity, Grasshop
 
     @Override
     public ResourceLocation getTextureLocation(GrasshopperEntity entity) {
-        return ResourceLocation.fromNamespaceAndPath("hidden_caves", "textures/entity/blablabla/linnett.png");
+        return ResourceLocation.fromNamespaceAndPath("hidden_caves", "textures/entity/grasshopper/grasshopper.png");
     }
 
 
