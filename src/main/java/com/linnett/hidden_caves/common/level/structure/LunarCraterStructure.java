@@ -1,6 +1,7 @@
 package com.linnett.hidden_caves.common.level.structure;
 
 import com.b04ka.cavelib.structure.AbstractCaveGenerationStructure;
+import com.b04ka.cavelib.structure.piece.CanyonStructurePiece;
 import com.b04ka.cavelib.structure.piece.CavernStructurePiece;
 import com.linnett.hidden_caves.common.block.HCBlockRegistry;
 import com.linnett.hidden_caves.common.level.biome.LunarCraterBiome;
@@ -15,14 +16,11 @@ import net.minecraft.world.level.levelgen.structure.StructureType;
 
 public class LunarCraterStructure extends AbstractCaveGenerationStructure {
     public static final MapCodec<LunarCraterStructure> CODEC = simpleCodec((settings) -> new LunarCraterStructure(settings));
-
-    private static final int BOWL_WIDTH_RADIUS = 100;
-    private static final int BOWL_HEIGHT_RADIUS = 80;
-    public static final int BOWL_Y_CENTER = -1;
-
     protected LunarCraterStructure(Structure.StructureSettings settings) {
         super(settings, LunarCraterBiome.LUNAR_CRATER);
     }
+
+    public static final int BOWL_Y_CENTER = -10;
 
     @Override
     protected StructurePiece createPiece(BlockPos offset, BlockPos center, int heightBlocks, int widthBlocks, RandomState randomState) {
@@ -36,12 +34,12 @@ public class LunarCraterStructure extends AbstractCaveGenerationStructure {
 
     @Override
     public int getWidthRadius(WorldgenRandom random) {
-        return BOWL_WIDTH_RADIUS;
+        return 100;
     }
 
     @Override
     public int getHeightRadius(WorldgenRandom random, int seaLevel) {
-        return BOWL_HEIGHT_RADIUS;
+        return 120;
     }
 
     @Override

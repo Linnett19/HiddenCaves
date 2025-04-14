@@ -55,67 +55,6 @@ public class HCBlockRegistry {
                     .sound(SoundType.MUD_BRICKS)));
 
 
-    public static final DeferredBlock<Block> RIVER_SLATE_PAWN = registerBlock("river_slate_pawn",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
-    public static final DeferredBlock<Block> RIVER_SLATE_BISHOP = registerBlock("river_slate_bishop",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
-    public static final DeferredBlock<Block> RIVER_SLATE_KING = registerBlock("river_slate_king",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
-    public static final DeferredBlock<Block> RIVER_SLATE_QUEEN = registerBlock("river_slate_queen",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
-    public static final DeferredBlock<Block> RIVER_SLATE_KNIGHT = registerBlock("river_slate_knight",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
-    public static final DeferredBlock<Block> RIVER_SLATE_ROOK = registerBlock("river_slate_rook",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
-
-    public static final DeferredBlock<Block> NACRE_PAWN = registerBlock("nacre_pawn",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
-    public static final DeferredBlock<Block> NACRE_BISHOP = registerBlock("nacre_bishop",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
-    public static final DeferredBlock<Block> NACRE_KING = registerBlock("nacre_king",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
-    public static final DeferredBlock<Block> NACRE_QUEEN = registerBlock("nacre_queen",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
-    public static final DeferredBlock<Block> NACRE_KNIGHT = registerBlock("nacre_knight",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
-    public static final DeferredBlock<Block> NACRE_ROOK = registerBlock("nacre_rook",
-            () -> new ChessBlock(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops()
-                    .sound(SoundType.STONE)));
-
     public static final DeferredBlock<Block> NACRE_LAPIS_ORE = registerBlock("nacre_lapis_ore",
             () -> new ChessBlock(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops()

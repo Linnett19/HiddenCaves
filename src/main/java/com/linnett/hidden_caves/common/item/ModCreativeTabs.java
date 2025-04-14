@@ -30,24 +30,12 @@ public class ModCreativeTabs {
                         output.accept(HCBlockRegistry.NACRE);
                         output.accept(HCBlockRegistry.POLISHED_NACRE);
 
-                        output.accept(HCBlockRegistry.RIVER_SLATE_PAWN);
-                        output.accept(HCBlockRegistry.RIVER_SLATE_ROOK);
-                        output.accept(HCBlockRegistry.RIVER_SLATE_BISHOP);
-                        output.accept(HCBlockRegistry.RIVER_SLATE_KNIGHT);
-                        output.accept(HCBlockRegistry.RIVER_SLATE_QUEEN);
-                        output.accept(HCBlockRegistry.RIVER_SLATE_KING);
 
                         output.accept(HCBlockRegistry.CHESTNUT_STEM);
                         output.accept(HCBlockRegistry.LICHEN);
                         output.accept(HCBlockRegistry.RIVER_GRASS);
                         output.accept(HCBlockRegistry.CAVE_LILLY_PAD);
 
-                        output.accept(HCBlockRegistry.NACRE_PAWN);
-                        output.accept(HCBlockRegistry.NACRE_ROOK);
-                        output.accept(HCBlockRegistry.NACRE_BISHOP);
-                        output.accept(HCBlockRegistry.NACRE_KNIGHT);
-                        output.accept(HCBlockRegistry.NACRE_QUEEN);
-                        output.accept(HCBlockRegistry.NACRE_KING);
 
                         output.accept(ModItems.BUTTER_PIECE);
 
