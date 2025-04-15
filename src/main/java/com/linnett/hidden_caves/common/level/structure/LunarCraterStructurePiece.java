@@ -8,70 +8,124 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 
 public class LunarCraterStructurePiece extends CanyonStructurePiece {
 
+    private static final Block[] FLOOR_BLOCKS = new Block[]{
+            Blocks.COBBLESTONE,
+    };
+
+
     public LunarCraterStructurePiece(BlockPos chunkCorner, BlockPos holeCenter, int bowlHeight, int bowlRadius) {
-        super(chunkCorner, holeCenter, bowlHeight, bowlRadius * 2, Blocks.STONE, Blocks.SANDSTONE);
+        super(chunkCorner, holeCenter, bowlHeight, bowlRadius * 1, Blocks.STONE, Blocks.STONE);
     }
-    public void postProcess(WorldGenLevel level, StructureManager featureManager, ChunkGenerator chunkGen, RandomSource random, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+
+    @Override
+    public void postProcess(WorldGenLevel level, StructureManager featureManager, ChunkGenerator chunkGen,
+                            RandomSource random, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
         int cornerX = this.chunkCorner.getX();
         int cornerY = this.chunkCorner.getY();
         int cornerZ = this.chunkCorner.getZ();
         BlockPos.MutableBlockPos carve = new BlockPos.MutableBlockPos();
+        BlockPos.MutableBlockPos carveAbove = new BlockPos.MutableBlockPos();
         BlockPos.MutableBlockPos carveBelow = new BlockPos.MutableBlockPos();
         carve.set(cornerX, cornerY, cornerZ);
+        carveAbove.set(cornerX, cornerY, cornerZ);
+        carveBelow.set(cornerX, cornerY, cornerZ);
+
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
                 MutableBoolean doFloor = new MutableBoolean(false);
                 for (int y = 15; y >= 0; y--) {
                     carve.set(cornerX + x, Mth.clamp(cornerY + y, level.getMinBuildHeight(), level.getMaxBuildHeight()), cornerZ + z);
+                    carveAbove.set(carve.getX(), carve.getY() + 1, carve.getZ());
+
                     if (inCircle(carve) && !checkedGetBlock(level, carve).is(Blocks.BEDROCK)) {
-                        checkedSetBlock(level, carve, Blocks.CAVE_AIR.defaultBlockState());
-                        carveBelow.set(carve.getX(), carve.getY() - 1, carve.getZ());
-                        doFloor.setTrue();
-                    } else if (doFloor.isTrue()) {
-                        break;
+
+                        if (y > level.getHeight() - 5) {
+                            continue;
+                        }
+
+                        if (level.getBlockState(carve).getFluidState().isEmpty()) {
+                            checkedSetBlock(level, carve, Blocks.CAVE_AIR.defaultBlockState());
+                            carveBelow.set(carve.getX(), carve.getY() - 1, carve.getZ());
+                            doFloor.setTrue();
+                        }
                     }
                 }
-                if (doFloor.isTrue() && !checkedGetBlock(level, carveBelow).isAir()) {
-                    decorateFloor(level, random, carveBelow);
-                    doFloor.setFalse();
+
+                if (doFloor.isTrue()) {
+                    BlockState floor = checkedGetBlock(level, carveBelow);
+                    if (!floor.isAir()) {
+                        decorateFloor(level, random, carveBelow.immutable());
+                    }
                 }
             }
         }
     }
 
+    private void decorateFloor(WorldGenLevel level, RandomSource rand, BlockPos blockPos) {
+        double roadRadius = 0.001D;
+        float roadNoise = Math.abs(ACMath.sampleNoise2D(blockPos.getX() + 1200, blockPos.getZ() + 10222, 100.0F));
+        float roadNoiseSq = (float) Math.pow(roadNoise, 3.0F);
 
-    private boolean inCircle(BlockPos.MutableBlockPos carve) {
-        float pillarNoise = (ACMath.sampleNoise3D(carve.getX(), (int) (carve.getY() * 0.4F), carve.getZ(), 30) + 1.0F) * 0.5F;
-        float verticalNoise = (ACMath.sampleNoise2D(carve.getX(), carve.getZ(), 50) + 1.0F) * 0.2F - (ACMath.smin(ACMath.sampleNoise2D(carve.getX(), carve.getZ(), 20), -0.5F, 0.1F) + 0.5F) * 0.7F;
-        double distToCenter = carve.distToLowCornerSqr(this.holeCenter.getX(), carve.getY(), this.holeCenter.getZ());
-        float f = getHeightOf(carve);
-        float f1 = (float) Math.pow(canyonStep(f, 10), 2.5F);
-        float rawHeight = Math.abs(this.holeCenter.getY() - carve.getY()) / (float) (height * 0.5F);
-        float reverseRawHeight = 1F - rawHeight;
-        double yDist = ACMath.smin((float) Math.pow(reverseRawHeight, 0.3F), 1.0F, 0.1F);
-        double targetRadius = (yDist * (radius * pillarNoise * f1) * radius);
-        return distToCenter < targetRadius && rawHeight < 1 - verticalNoise;
-    }
+        boolean roadFlag = false;
+        BlockState topBlock = FLOOR_BLOCKS[rand.nextInt(FLOOR_BLOCKS.length)].defaultBlockState();
+        BlockState underBlock = Blocks.COBBLESTONE.defaultBlockState();
 
-    private float getHeightOf(BlockPos.MutableBlockPos carve) {
-        int halfHeight = this.height / 2;
-        if (carve.getY() > this.holeCenter.getY() + halfHeight + 1 || carve.getY() < this.holeCenter.getY() - halfHeight) {
-            return 0.0F;
-        } else {
-            return 1F - ((this.holeCenter.getY() + halfHeight - carve.getY()) / (float) (height * 2));
+
+        checkedSetBlock(level, blockPos, topBlock);
+
+        if (!roadFlag) {
+            for (int i = 0; i < 1 + rand.nextInt(2); i++) {
+                checkedSetBlock(level, blockPos.below(i), underBlock);
+            }
         }
     }
 
-    private float canyonStep(float heightScale, int scaleTo) {
-        int clampTo100 = (int) ((heightScale) * scaleTo * scaleTo);
-        return Mth.clamp((float) (Math.round(clampTo100 / (float) scaleTo)) / (float) scaleTo, 0F, 1F);
+    private boolean inCircle(BlockPos carve) {
+        double plateauHeight = calculatePlateauHeight(carve.getX(), carve.getZ(), 7, true);
+        double distToCenterXZ = carve.distToLowCornerSqr(this.holeCenter.getX(), carve.getY(), this.holeCenter.getZ());
+
+        if (carve.getY() < (int) plateauHeight) {
+            return false;
+        }
+
+        double ceilingNoise = 1.0F + (1.0F + ACMath.sampleNoise2D(carve.getX() + 9000, carve.getZ() - 9000, 120)) * 10
+                + (1.0F + ACMath.sampleNoise2D(carve.getX() + 3000, carve.getZ() + 2000, 40)) * 4;
+        double wallNoise = 0.9F + ACMath.sampleNoise2D(carve.getX() + 9000, carve.getZ() - 9000, 120) * 0.1F;
+        double celingHeightScaled = this.height * 0.85F - ceilingNoise;
+        float yDome = (float) Math.pow(Math.abs(this.holeCenter.getY() - carve.getY()) / (float) height, 4);
+        double yDist = smoothMin(1F - yDome, 1.0F, 0.2F);
+
+        return distToCenterXZ < yDist * (radius * wallNoise) * radius
+                && carve.getY() < this.holeCenter.getY() + celingHeightScaled;
     }
 
+    public static double calculatePlateauHeight(int x, int z, int curvedTop, boolean terrainNoise) {
+        int plateauSize = 48;
+        float plateauNoise = (0.5F + ACMath.sampleNoise2D(x, z, 100)) * 0.5F;
+        double slightTerrainNoise = terrainNoise ?
+                ACMath.sampleNoise2D(x + 9000, z - 9000, 150) + ACMath.sampleNoise2D(x + 18000, z + 9000, 60) : 0;
+
+        float step1 = stepFunction(Mth.sqrt(plateauNoise), 5);
+        float step2 = stepFunction(Mth.sqrt(plateauNoise), 10);
+
+        return -48 + step1 * plateauSize + step2 * curvedTop + slightTerrainNoise;
+    }
+
+    private static float stepFunction(float value, int steps) {
+        return Math.round(value * steps) / (float) steps;
+    }
+
+    private static double smoothMin(double a, double b, double k) {
+        double h = Math.max(k - Math.abs(a - b), 0.0) / k;
+        return Math.min(a, b) - h * h * k * 0.25;
+    }
 }

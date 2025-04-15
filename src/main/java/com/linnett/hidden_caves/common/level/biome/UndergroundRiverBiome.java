@@ -52,8 +52,8 @@ public class UndergroundRiverBiome {
                 .setAmbientLight(0.2F)
                 .setSkyOverride(1F)
                 .setLightColorOverride(BLUE_LIGHT_COLOR)
-                .setFogNearness(0.7F)
-                .setWaterFogFarness(0.9F)
+                .setFogNearness( -0.98F )
+                .setWaterFogFarness( -0.98F )
                 .build();
 
         CaveSurfaceRules.addRule(UNDERGROUND_RIVER, createUndergroundRiverRules());
