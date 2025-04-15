@@ -22,7 +22,7 @@ public class LunarCraterBiome {
     public static final ResourceKey<Biome> LUNAR_CRATER = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(HiddenCaves.MODID, "lunar_crater"));
 
     public static final BiomeGenerationNoiseCondition LUNAR_CRATER_CONDITION = new BiomeGenerationNoiseCondition.Builder()
-            .dimensions(LevelStem.OVERWORLD.location().toString()).distanceFromSpawn(400).continentalness(0.6F, 1F).depth(0.2F, 1.5F).build();
+            .dimensions(LevelStem.OVERWORLD.location().toString()).distanceFromSpawn(400).continentalness(0.6F, 1F).depth(0.1F, 1.2F).build();
 
     public static SurfaceRules.RuleSource createLunarCraterRules() {
         SurfaceRules.RuleSource mud = SurfaceRules.state(Blocks.STONE.defaultBlockState());

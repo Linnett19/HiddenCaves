@@ -20,6 +20,8 @@ public class LunarCraterStructure extends AbstractCaveGenerationStructure {
         super(settings, LunarCraterBiome.LUNAR_CRATER);
     }
 
+    private static final int BOWL_WIDTH_RADIUS = 100;
+    private static final int BOWL_HEIGHT_RADIUS = 60;
     public static final int BOWL_Y_CENTER = -10;
 
     @Override
@@ -39,7 +41,7 @@ public class LunarCraterStructure extends AbstractCaveGenerationStructure {
 
     @Override
     public int getHeightRadius(WorldgenRandom random, int seaLevel) {
-        return 120;
+        return 90;
     }
 
     @Override
