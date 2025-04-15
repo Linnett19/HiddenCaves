@@ -87,12 +87,21 @@ public class HCBlockRegistry {
                     .strength(4f).requiresCorrectToolForDrops()
                     .sound(SoundType.MOSS)));
 
+
+
+
+
+
+
     public static final DeferredBlock<Block> MOON_STONE = registerBlock("moon_stone",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops()
                     .sound(SoundType.MOSS)));
 
-
+    public static final DeferredBlock<Block> MOON_BLOCK = registerBlock("moon_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops()
+                    .sound(SoundType.MOSS)));
 
 
 

@@ -3,32 +3,25 @@ package com.linnett.hidden_caves.common.level.structure;
 import com.b04ka.cavelib.misc.ACMath;
 import com.b04ka.cavelib.structure.piece.CanyonStructurePiece;
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 
 public class LunarCraterStructurePiece extends CanyonStructurePiece {
 
-    private static final Block[] FLOOR_BLOCKS = new Block[]{
-            Blocks.COBBLESTONE,
-    };
-
-
     public LunarCraterStructurePiece(BlockPos chunkCorner, BlockPos holeCenter, int bowlHeight, int bowlRadius) {
-        super(chunkCorner, holeCenter, bowlHeight, bowlRadius * 1, Blocks.STONE, Blocks.STONE);
+        super(chunkCorner, holeCenter, bowlHeight, bowlRadius * 2, Blocks.STONE, Blocks.SANDSTONE);
     }
 
     @Override
-    public void postProcess(WorldGenLevel level, StructureManager featureManager, ChunkGenerator chunkGen,
-                            RandomSource random, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+    public void postProcess(WorldGenLevel level, StructureManager featureManager, ChunkGenerator chunkGen, RandomSource random, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
         int cornerX = this.chunkCorner.getX();
         int cornerY = this.chunkCorner.getY();
         int cornerZ = this.chunkCorner.getZ();
@@ -47,60 +40,27 @@ public class LunarCraterStructurePiece extends CanyonStructurePiece {
                     carveAbove.set(carve.getX(), carve.getY() + 1, carve.getZ());
 
                     if (inCircle(carve) && !checkedGetBlock(level, carve).is(Blocks.BEDROCK)) {
-
-                        if (y > level.getHeight() - 5) {
-                            continue;
-                        }
-
-                        if (level.getBlockState(carve).getFluidState().isEmpty()) {
-                            checkedSetBlock(level, carve, Blocks.CAVE_AIR.defaultBlockState());
-                            carveBelow.set(carve.getX(), carve.getY() - 1, carve.getZ());
-                            doFloor.setTrue();
-                        }
+                        checkedSetBlock(level, carve, Blocks.CAVE_AIR.defaultBlockState());
+                        carveBelow.set(carve.getX(), carve.getY() - 1, carve.getZ());
+                        doFloor.setTrue();
                     }
                 }
-
-                if (doFloor.isTrue()) {
-                    BlockState floor = checkedGetBlock(level, carveBelow);
-                    if (!floor.isAir()) {
-                        decorateFloor(level, random, carveBelow.immutable());
-                    }
-                }
-            }
-        }
-    }
-
-    private void decorateFloor(WorldGenLevel level, RandomSource rand, BlockPos blockPos) {
-        double roadRadius = 0.001D;
-        float roadNoise = Math.abs(ACMath.sampleNoise2D(blockPos.getX() + 1200, blockPos.getZ() + 10222, 100.0F));
-        float roadNoiseSq = (float) Math.pow(roadNoise, 3.0F);
-
-        boolean roadFlag = false;
-        BlockState topBlock = FLOOR_BLOCKS[rand.nextInt(FLOOR_BLOCKS.length)].defaultBlockState();
-        BlockState underBlock = Blocks.COBBLESTONE.defaultBlockState();
-
-
-        checkedSetBlock(level, blockPos, topBlock);
-
-        if (!roadFlag) {
-            for (int i = 0; i < 1 + rand.nextInt(2); i++) {
-                checkedSetBlock(level, blockPos.below(i), underBlock);
             }
         }
     }
 
     private boolean inCircle(BlockPos carve) {
-        double plateauHeight = calculatePlateauHeight(carve.getX(), carve.getZ(), 7, true);
+        double plateauHeight = calculatePlateauHeight(carve.getX(), carve.getZ(), 5, false);
         double distToCenterXZ = carve.distToLowCornerSqr(this.holeCenter.getX(), carve.getY(), this.holeCenter.getZ());
 
         if (carve.getY() < (int) plateauHeight) {
             return false;
         }
 
-        double ceilingNoise = 1.0F + (1.0F + ACMath.sampleNoise2D(carve.getX() + 9000, carve.getZ() - 9000, 120)) * 10
-                + (1.0F + ACMath.sampleNoise2D(carve.getX() + 3000, carve.getZ() + 2000, 40)) * 4;
-        double wallNoise = 0.9F + ACMath.sampleNoise2D(carve.getX() + 9000, carve.getZ() - 9000, 120) * 0.1F;
-        double celingHeightScaled = this.height * 0.85F - ceilingNoise;
+        double ceilingNoise = (1.0F + ACMath.sampleNoise2D(carve.getX() + 9000, carve.getZ() - 9000, 120)) * 5
+                + (1.0F + ACMath.sampleNoise2D(carve.getX() + 3000, carve.getZ() + 2000, 40)) * 2;
+        double wallNoise = 0.95F + ACMath.sampleNoise2D(carve.getX() + 9000, carve.getZ() - 9000, 120) * 0.05F;
+        double celingHeightScaled = this.height * 0.6F - ceilingNoise;
         float yDome = (float) Math.pow(Math.abs(this.holeCenter.getY() - carve.getY()) / (float) height, 4);
         double yDist = smoothMin(1F - yDome, 1.0F, 0.2F);
 

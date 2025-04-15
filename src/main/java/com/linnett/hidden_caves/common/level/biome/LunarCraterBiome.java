@@ -7,6 +7,7 @@ import com.b04ka.cavelib.deprecated.ExpandedBiomes;
 import com.b04ka.cavelib.sufrace.CaveSurfaceRules;
 import com.b04ka.cavelib.sufrace.SurfaceRuleConditionRegistry;
 import com.linnett.hidden_caves.HiddenCaves;
+import com.linnett.hidden_caves.common.block.HCBlockRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -25,9 +26,9 @@ public class LunarCraterBiome {
             .dimensions(LevelStem.OVERWORLD.location().toString()).distanceFromSpawn(400).continentalness(0.6F, 1F).depth(0.1F, 1.2F).build();
 
     public static SurfaceRules.RuleSource createLunarCraterRules() {
-        SurfaceRules.RuleSource mud = SurfaceRules.state(Blocks.STONE.defaultBlockState());
-        SurfaceRules.RuleSource guanostone = SurfaceRules.state(Blocks.COBBLESTONE.defaultBlockState());
-        SurfaceRules.RuleSource corpolith = SurfaceRules.state(Blocks.DEEPSLATE.defaultBlockState());
+        SurfaceRules.RuleSource mud = SurfaceRules.state(HCBlockRegistry.MOON_STONE.get().defaultBlockState());
+        SurfaceRules.RuleSource guanostone = SurfaceRules.state(HCBlockRegistry.MOON_STONE.get().defaultBlockState());
+        SurfaceRules.RuleSource corpolith = SurfaceRules.state(HCBlockRegistry.MOON_BLOCK.get().defaultBlockState());
         SurfaceRules.ConditionSource corpolithCondition = SurfaceRuleConditionRegistry.simplexCondition(-0.2F, 0.4F, 40, 6F, 3);
 
         return SurfaceRules.sequence(bedrock(), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, mud), SurfaceRules.ifTrue(corpolithCondition, corpolith), guanostone);
